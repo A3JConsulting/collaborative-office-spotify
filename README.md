@@ -38,7 +38,7 @@ Mopidy is the server responsible for the actual audio playback of the generated 
 * [Mopidy-Spotify](https://github.com/mopidy/mopidy-spotify) extension needs to be enabled and configured with Spotify login credentials
 * [Mopidy-Webhooks](https://github.com/paddycarey/mopidy-webhooks) extension needs to be enabled
 
-See [Mopidy configuration documentation](https://docs.mopidy.com/en/latest/config/) for help settings this up.
+See [Mopidy configuration documentation](https://docs.mopidy.com/en/latest/config/) for help setting this up.
 
 #### Slack & Hubot
 
