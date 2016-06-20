@@ -1,0 +1,5 @@
+*.swp
+node_modules
+daemon/config/*.json
+npm-debug.log
+.env
