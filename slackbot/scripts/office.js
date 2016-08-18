@@ -17,6 +17,7 @@
  *   pause music - pause the music playback
  *   next song - skip to next song
  *   haddaway - this one is obvious, right?
+ *   hotshot - this one as well
  *
  * Notes:
  *   Relies on a mopidy server running and listening on a websocket on the same machine hubot is running
@@ -180,6 +181,24 @@ module.exports = (robot) => {
 
   robot.hear(/haddaway/i, (res) => {
     ensure_public(res, () => {
+      mopidy.tracklist.filter({uri: ["spotify:track:2eTH6zBD3ZP4NG9IU9cltV"]}).then((tracks) => {
+        if (tracks.length) {
+          var p = new Promise((resolve, reject) => {
+            resolve(tracks);
+          });
+        } else {
+          var p = mopidy.tracklist.add({uri: "spotify:track:2eTH6zBD3ZP4NG9IU9cltV"});
+        }
+        p.then((tracks) => {
+          res.send("WHAT IS LOOOOVE?");
+          mopidy.playback.play([tracks[0]]);
+        });
+      });
+    });
+  });
+
+  robot.hear(/hotshot/i, (res) => {
+    ensure_public(res, () => {
       mopidy.tracklist.filter({uri: ["spotify:track:2IHaGyfxNoFPLJnaEg4GTs"]}).then((tracks) => {
         if (tracks.length) {
           var p = new Promise((resolve, reject) => {
@@ -189,7 +208,7 @@ module.exports = (robot) => {
           var p = mopidy.tracklist.add({uri: "spotify:track:2IHaGyfxNoFPLJnaEg4GTs"});
         }
         p.then((tracks) => {
-          res.send("WHAT IS LOOOOVE?");
+          res.send("HOT SHOT!");
           mopidy.playback.play([tracks[0]]);
         });
       });
