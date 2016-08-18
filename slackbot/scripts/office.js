@@ -181,13 +181,13 @@ module.exports = (robot) => {
 
   robot.hear(/haddaway/i, (res) => {
     ensure_public(res, () => {
-      mopidy.tracklist.filter({uri: ["spotify:track:2eTH6zBD3ZP4NG9IU9cltV"]}).then((tracks) => {
+      mopidy.tracklist.filter({uri: ["spotify:track:2IHaGyfxNoFPLJnaEg4GTs"]}).then((tracks) => {
         if (tracks.length) {
           var p = new Promise((resolve, reject) => {
             resolve(tracks);
           });
         } else {
-          var p = mopidy.tracklist.add({uri: "spotify:track:2eTH6zBD3ZP4NG9IU9cltV"});
+          var p = mopidy.tracklist.add({uri: "spotify:track:2IHaGyfxNoFPLJnaEg4GTs"});
         }
         p.then((tracks) => {
           res.send("WHAT IS LOOOOVE?");
@@ -199,13 +199,13 @@ module.exports = (robot) => {
 
   robot.hear(/hotshot/i, (res) => {
     ensure_public(res, () => {
-      mopidy.tracklist.filter({uri: ["spotify:track:2IHaGyfxNoFPLJnaEg4GTs"]}).then((tracks) => {
+      mopidy.tracklist.filter({uri: ["spotify:track:2eTH6zBD3ZP4NG9IU9cltV"]}).then((tracks) => {
         if (tracks.length) {
           var p = new Promise((resolve, reject) => {
             resolve(tracks);
           });
         } else {
-          var p = mopidy.tracklist.add({uri: "spotify:track:2IHaGyfxNoFPLJnaEg4GTs"});
+          var p = mopidy.tracklist.add({uri: "spotify:track:2eTH6zBD3ZP4NG9IU9cltV"});
         }
         p.then((tracks) => {
           res.send("HOT SHOT!");
