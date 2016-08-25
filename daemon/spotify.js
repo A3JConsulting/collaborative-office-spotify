@@ -79,7 +79,7 @@ var Spotify = function(clientId, clientSecret, masterPlaylist, redis, redirectUr
   }
 
   this.replaceTracksInPlaylist = function(tracks) {
-    var maxTracks = 100;
+    var maxTracks = 75;
     // Get all tracks in current playlist
     return new Promise(function(resolve, reject) {
       var aggregatedTracks = [];
@@ -109,8 +109,8 @@ var Spotify = function(clientId, clientSecret, masterPlaylist, redis, redirectUr
         existingTracks = new Set(existingTracks);
         tracks = new Set(tracks);
 
-        var remove = [...new Set([...existingTracks].filter(x => !tracks.has(x)))].map(function(uri) { return { uri: uri }; });
-        var add = [...new Set([...tracks].filter(x => !existingTracks.has(x)))];
+        var remove = [...new Set([...existingTracks].filter(x => (x && !tracks.has(x))))].map(function(uri) { return { uri: uri }; });
+        var add = [...new Set([...tracks].filter(x => (x && !existingTracks.has(x))))];
         var actions = [];
 
         for (var i=0 ; i<remove.length ; i += maxTracks) {
