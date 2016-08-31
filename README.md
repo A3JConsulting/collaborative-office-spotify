@@ -100,6 +100,7 @@ These commands can be issued in any channel Hubot is [setup](https://slack.com/a
 * `pause music`
 * `next song`
 * `haddaway`
+* `hotshot`
 
 
 Happy playing!!!
