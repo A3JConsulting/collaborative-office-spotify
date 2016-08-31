@@ -8,7 +8,7 @@ Overall, it works the following way:
 * Given the list of playlists generated, a new playlist is constructed as a weighted union of these playlists
 * The playlist is shuffled and played through Mopidy
 * When a device is entering or leaving the network, or someone online on the network changes his/her associated playlist, the collaborative playlist is regenerated, shuffled and played
-* Playback (play, pause, skip song and play [What is love](https://open.spotify.com/track/2IHaGyfxNoFPLJnaEg4GTs)) is controlled through Slack commands, as well as list current playlist etc
+* Playback (play, pause, skip song and play [What is love](https://open.spotify.com/track/2IHaGyfxNoFPLJnaEg4GTs) + [Het som en Hotshot](https://open.spotify.com/track/2eTH6zBD3ZP4NG9IU9cltV)) is controlled through Slack commands, as well as list current playlist etc
 
 Technically, COS consists of two daemons: `slackbot` and `office-playlist-daemon`
 
@@ -75,6 +75,9 @@ Required settings are:
 * `HUBOT_SLACK_TOKEN` - provided to youe by the [Slack Hubot integration](https://slack.com/apps/A0F7XDU93-hubot).
 * `MOPIDY_WS_URL` - Websocket url to the Mopidy JSON-RPC API
 * `PLAYBACK_NOTIFY_CHANNEL` - Name of the channel Hubot should post updates about songs being played to
+
+Optional settings are:
+* `PLAYLIST_EXPIRY_DAYS` - Number of days before a users playlist pick expires
 
 ## Control commands (Slack hubot)
 
