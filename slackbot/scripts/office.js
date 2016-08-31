@@ -141,7 +141,11 @@ module.exports = (robot) => {
     ensure_private(res, () => {
       const key = playlist_key.replace("{user_id}", res.message.user.id);
       const playlist = res.match[1];
-      redis.set(key, playlist);
+      if (process.env.PLAYLIST_EXPIRY_DAYS) {
+        redis.setex(key, 3600*24*parseInt(process.env.PLAYLIST_EXPIRY_DAYS), playlist);
+      } else {
+        redis.set(key, playlist);
+      }
       res.send("Got it");
     });
   });
