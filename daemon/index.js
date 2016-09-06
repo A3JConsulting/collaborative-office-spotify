@@ -19,7 +19,7 @@ const mopidy = new Mopidy({
 util.log('Starting daemon');
 
 mopidy.on('state:online', function() {
-  mopidy.tracklist.setRandom([true]).then(function() {
+  mopidy.tracklist.setRandom([false]).then(function() {
     mopidy.tracklist.setRepeat([true]);
   }).catch(function() {});
   spotifyClient.dirty = true;
@@ -67,6 +67,8 @@ function updateMopidy() {
         mopidy.tracklist.clear().then(() => {
           mopidy.tracklist.add({'uri': spotifyClient.getPlaylistURI()}).then(() => {
             util.log("List readded. State is: " + state);
+            util.log("Shuffling playlist");
+            mopidy.tracklist.shuffle();
             if (state == 'playing') {
               mopidy.playback.play();
             }
